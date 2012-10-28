@@ -1,12 +1,12 @@
 Summary:	An image viewer and browser for GNOME
 Name:		gthumb
-Version:	3.1.1
+Version:	3.1.2
 Release:	1
 License:	GPL v2
 Vendor:		GNOME
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gthumb/3.1/%{name}-%{version}.tar.xz
-# Source0-md5:	17bbf37d74f6cd6572932932e220eb7f
+# Source0-md5:	130e318a2b52160ebd5ef2eaaf9a30af
 URL:		http://live.gnome.org/gthumb
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -19,7 +19,7 @@ BuildRequires:	intltool
 BuildRequires:	libexif-devel
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libgphoto2-devel
-#BuildRequires:	libiptcdata-devel
+BuildRequires:	libiptcdata-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libsoup-gnome-devel
