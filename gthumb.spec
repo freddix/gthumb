@@ -1,7 +1,7 @@
 Summary:	An image viewer and browser for GNOME
 Name:		gthumb
 Version:	3.2.0
-Release:	1
+Release:	2
 License:	GPL v2
 Vendor:		GNOME
 Group:		X11/Applications/Graphics
@@ -25,6 +25,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libsoup-gnome-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
+BuildRequires:	libwebp-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	xorg-libXtst-devel
 BuildRequires:	xorg-libXxf86vm-devel
@@ -32,7 +33,6 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib-gio-gsettings
 Requires(post,postun):	gtk+-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
-Requires(post,postun):	rarian
 Requires:	gsettings-desktop-schemas
 Suggests:	dcraw
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -63,7 +63,6 @@ sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
 %{__autoconf}
 %configure \
 	--disable-schemas-compile	\
-	--disable-scrollkeeper		\
 	--disable-silent-rules		\
 	--disable-static
 %{__make}
@@ -79,19 +78,17 @@ rm -rf $RPM_BUILD_ROOT%{_includedir}
 
 gtk-update-icon-cache -ft $RPM_BUILD_ROOT%{_datadir}/%{name}/icons/hicolor
 
-%find_lang %{name} --with-gnome --with-omf
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%scrollkeeper_update_post
 %update_desktop_database_post
 %update_icon_cache hicolor
 %update_gsettings_cache
 
 %postun
-%scrollkeeper_update_postun
 %update_desktop_database_postun
 %update_icon_cache hicolor
 %update_gsettings_cache
