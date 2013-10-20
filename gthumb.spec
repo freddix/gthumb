@@ -1,12 +1,12 @@
 Summary:	An image viewer and browser for GNOME
 Name:		gthumb
-Version:	3.2.3
-Release:	2
+Version:	3.2.4
+Release:	1
 License:	GPL v2
 Vendor:		GNOME
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gthumb/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	e9f87bb61dadac14f9460d29b318e264
+# Source0-md5:	0c47b41b7c31fa146504e6efc121c703
 URL:		http://live.gnome.org/gthumb
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -48,7 +48,7 @@ view slideshows, set your desktop background, and more.
 %setup -q
 
 # kill gnome common deps
-sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
+%{__sed} -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
     -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
@@ -74,8 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/extensions/*.la
-rm -rf $RPM_BUILD_ROOT%{_includedir}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/extensions/*.la
+%{__rm} -r $RPM_BUILD_ROOT%{_includedir}
 
 gtk-update-icon-cache -ft $RPM_BUILD_ROOT%{_datadir}/%{name}/icons/hicolor
 
