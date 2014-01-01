@@ -1,12 +1,12 @@
 Summary:	An image viewer and browser for GNOME
 Name:		gthumb
-Version:	3.2.5
+Version:	3.2.6
 Release:	1
 License:	GPL v2
 Vendor:		GNOME
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gthumb/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	c35780321b52e134213ec2d2f5ce8a07
+# Source0-md5:	7f78a3eecbcc2331ad349ef7610db5bd
 URL:		http://live.gnome.org/gthumb
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -30,12 +30,15 @@ BuildRequires:	libwebp-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	xorg-libXtst-devel
 BuildRequires:	xorg-libXxf86vm-devel
+Requires(post,postun):	/usr/bin/gtk-update-icon-cache
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib-gio-gsettings
-Requires(post,postun):	gtk+-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Requires:	gsettings-desktop-schemas
+Suggests:	brasero
 Suggests:	dcraw
+Suggests:	gstreamer-plugins-base
+Suggests:	gstreamer-plugins-good
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -85,12 +88,12 @@ gtk-update-icon-cache -ft $RPM_BUILD_ROOT%{_datadir}/%{name}/icons/hicolor
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%update_desktop_database_post
+%update_desktop_database
 %update_icon_cache hicolor
 %update_gsettings_cache
 
 %postun
-%update_desktop_database_postun
+%update_desktop_database
 %update_icon_cache hicolor
 %update_gsettings_cache
 
