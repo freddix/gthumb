@@ -1,7 +1,7 @@
 Summary:	An image viewer and browser for GNOME
 Name:		gthumb
 Version:	3.2.6
-Release:	1
+Release:	2
 License:	GPL v2
 Vendor:		GNOME
 Group:		X11/Applications/Graphics
@@ -59,7 +59,6 @@ view slideshows, set your desktop background, and more.
 
 %build
 %{__libtoolize}
-%{__gnome_doc_prepare}
 %{__intltoolize}
 %{__aclocal} -I m4
 %{__autoheader}
