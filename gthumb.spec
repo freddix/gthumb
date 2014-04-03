@@ -1,12 +1,12 @@
 Summary:	An image viewer and browser for GNOME
 Name:		gthumb
-Version:	3.2.6
-Release:	2
+Version:	3.2.7
+Release:	1
 License:	GPL v2
 Vendor:		GNOME
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gthumb/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	7f78a3eecbcc2331ad349ef7610db5bd
+# Source0-md5:	6fa4b49907bf932eb84ddaa5f85b0c03
 URL:		http://live.gnome.org/gthumb
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -76,6 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/GConf
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/extensions/*.la
 %{__rm} -r $RPM_BUILD_ROOT%{_includedir}
 
