@@ -1,17 +1,15 @@
 Summary:	An image viewer and browser for GNOME
 Name:		gthumb
-Version:	3.2.8
+Version:	3.4.0
 Release:	1
 License:	GPL v2
 Vendor:		GNOME
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gthumb/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	71e31eb6b3a0eaadf57071b089d04051
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gthumb/3.4/%{name}-%{version}.tar.xz
+# Source0-md5:	c920d76705094141a339c97b9df8d3e7
 URL:		http://live.gnome.org/gthumb
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	brasero-devel
-BuildRequires:	clutter-gtk-devel
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gstreamer-plugins-base-devel
 BuildRequires:	gtk+-update-icon-cache
@@ -23,6 +21,7 @@ BuildRequires:	libgphoto2-devel
 BuildRequires:	libiptcdata-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
+BuildRequires:	libraw-devel
 BuildRequires:	libsoup-gnome-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
@@ -65,6 +64,8 @@ view slideshows, set your desktop background, and more.
 %{__automake}
 %{__autoconf}
 %configure \
+	--disable-clutter		\
+	--disable-libbrasero		\
 	--disable-schemas-compile	\
 	--disable-silent-rules		\
 	--disable-static
